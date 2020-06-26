@@ -4,6 +4,13 @@
   "newProjectRoot": "projects",
   "projects": {
     "a9ExpTwo": {
+      "i18n": {
+        "locales": {
+          "en": "src/locale/messages.en.xlf",
+          "es": "src/locale/messages.es.xlf",
+          "fr": "src/locale/messages.fr.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -19,6 +26,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "localize": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -29,6 +37,15 @@
             "scripts": []
           },
           "configurations": {
+            "en": {
+              "localize": ["en"]
+            },
+            "es": {
+              "localize": ["es"]
+            },
+            "fr": {
+              "localize": ["fr"]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -67,6 +84,15 @@
           "configurations": {
             "production": {
               "browserTarget": "a9ExpTwo:build:production"
+            },
+            "a": {
+              "browserTarget": "a9ExpTwo:build:en"
+            },
+            "b": {
+              "browserTarget": "a9ExpTwo:build:es"
+            },
+            "c": {
+              "browserTarget": "a9ExpTwo:build:fr"
             }
           }
         },
@@ -77,20 +103,10 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
+          "configPath": "./package.json",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            "no-cache": true
           }
         },
         "lint": {
@@ -119,6 +135,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "a9ExpTwo"
+    }
+  },
+  "defaultProject": "a9ExpTwo",
+  "cli": {
+    "analytics": false
+  }
 }

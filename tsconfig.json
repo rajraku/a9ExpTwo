@@ -19,5 +19,11 @@
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  }
+  },
+  "no-import-side-effect": [
+    true,
+    {
+      "ignore-module": "(core-js/.*|zone\\.js/.*|@angular/localize/init)$"
+    }
+  ]
 }
